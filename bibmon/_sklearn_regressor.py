@@ -92,7 +92,9 @@ class sklearnRegressor (GenericModel):
             If permutation importances should be prioritized over coefficients
             in linear models.
         """          
-        
+        if not isinstance(permutation_importance, bool):
+            return
+
         model = self.regressor
         
         if hasattr(model,'coef_'):
