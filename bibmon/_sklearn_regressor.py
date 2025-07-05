@@ -93,6 +93,7 @@ class sklearnRegressor (GenericModel):
             in linear models.
         """          
         if not isinstance(permutation_importance, bool):
+            print(f"Erro: valor de permutation_importance é '{permutation_importance}'. O tipo de dado String nao é valido para essa variavel. Tipo de dado esperado: bool (True ou False).")
             return
 
         model = self.regressor
