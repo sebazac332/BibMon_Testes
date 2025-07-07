@@ -98,6 +98,8 @@ class sklearnRegressor (GenericModel):
                 print(f"O tipo de dado String nao é valido para essa variavel.")
             elif isinstance(permutation_importance, int):
                 print(f"O tipo de dado Integer nao é valido para essa variavel.")
+            elif isinstance(permutation_importance, float):
+                print(f"O tipo de dado Float nao é valido para essa variavel.")
             print(f"Tipo de dado esperado: bool (True ou False).")
             return
 

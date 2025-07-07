@@ -62,3 +62,21 @@ def test_plot_importances_invalid_permutation_type_int(dummy_data, capsys):
     assert "Erro: valor de permutation_importance é '23'" in captured.out
     assert "O tipo de dado Integer nao é valido para essa variavel" in captured.out
     assert "Tipo de dado esperado: bool (True ou False)" in captured.out
+
+def test_plot_importances_invalid_permutation_type_float(dummy_data, capsys):
+    X, Y = dummy_data
+
+    model = create_mock_model(coef_=np.array([0.2, 0.4, 0.4]))
+
+    reg = sklearnRegressor(model)
+    reg.X_train = X
+    reg.Y_train = Y
+
+    result = reg.plot_importances(permutation_importance=2.55)
+
+    captured = capsys.readouterr()
+
+    assert result is None or isinstance(result, type(None))
+    assert "Erro: valor de permutation_importance é '2.55'" in captured.out
+    assert "O tipo de dado Float nao é valido para essa variavel" in captured.out
+    assert "Tipo de dado esperado: bool (True ou False)" in captured.out
